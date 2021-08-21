@@ -570,6 +570,8 @@ RegistryMaps::RegistryMaps() {
   REGISTER_MATCHER(voidType);
   REGISTER_MATCHER(whileStmt);
   REGISTER_MATCHER(withInitializer);
+  REGISTER_MATCHER(importDecl); // STEEL ADD
+  REGISTER_MATCHER(exportDecl); // STEEL ADD
 }
 
 RegistryMaps::~RegistryMaps() = default;

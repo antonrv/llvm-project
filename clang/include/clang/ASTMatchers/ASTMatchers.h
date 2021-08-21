@@ -181,6 +181,12 @@ inline internal::TrueMatcher anything() { return internal::TrueMatcher(); }
 extern const internal::VariadicDynCastAllOfMatcher<Decl, TranslationUnitDecl>
     translationUnitDecl;
 
+// STEEL ADD
+extern const internal::VariadicDynCastAllOfMatcher<Decl, ImportDecl>
+    importDecl;
+extern const internal::VariadicDynCastAllOfMatcher<Decl, ExportDecl>
+    exportDecl;
+
 /// Matches typedef declarations.
 ///
 /// Given

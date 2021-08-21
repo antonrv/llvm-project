@@ -721,6 +721,11 @@ std::shared_ptr<llvm::Regex> createAndVerifyRegex(StringRef Regex,
 }
 } // end namespace internal
 
+const internal::VariadicDynCastAllOfMatcher<Decl, ImportDecl>
+    importDecl; // STEEL ADD
+const internal::VariadicDynCastAllOfMatcher<Decl, ExportDecl>
+    exportDecl; // STEEL ADD
+
 const internal::VariadicDynCastAllOfMatcher<Stmt, ObjCAutoreleasePoolStmt>
     autoreleasePoolStmt;
 const internal::VariadicDynCastAllOfMatcher<Decl, TranslationUnitDecl>

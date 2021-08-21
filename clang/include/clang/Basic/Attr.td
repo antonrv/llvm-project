@@ -3454,6 +3454,27 @@ def UPtr : TypeAttr {
   let Documentation = [UPtrDocs];
 }
 
+def STEELTask : InheritableAttr {
+  // let Spellings = [CXX11<"clang","uder">];
+  let Spellings = [CXX11<"steel","task">];
+  let Args = [StringArgument<"app", 1>];
+  // must either be a Decl in DeclNodes.td or a statement node in StmtNodes.td
+  let Subjects = SubjectList<[Function]>;
+  let ASTNode = 1;
+  let Documentation = [STEELTaskDocs];
+}
+
+// def STEELFunctionArgument : STEELKeyword, Var {} TODO
+// No need for keyword 'relax'. This will be a function call, and we can detect
+// the call to this easily within any function. Implicitly bound to steelrt
+// def STEELRelax : InheritableAttr, STEELKeyword {
+//   let Spellings = [Keyword<"relax">];
+//   let Subjects = SubjectList<[Var]>; // ?
+//   let ASTNode = 1;
+//   let HasCustomParsing = 1
+//   let Documentation = [STEELRelaxDocs];
+// }
+
 def MSInheritance : InheritableAttr {
   let LangOpts = [MicrosoftExt];
   let Args = [DefaultBoolArgument<"BestCase", /*default*/1, /*fake*/1>];

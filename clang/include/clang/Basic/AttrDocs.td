@@ -4824,6 +4824,21 @@ general this requires the template to be declared at least twice. For example:
   }];
 }
 
+def STEELDocs : Documentation {
+  let Content = [{
+Documentation for STEEL language feature. TODO
+  }];
+}
+
+def STEELTaskDocs : Documentation {
+  let Category = DocCatFunction;
+  let Heading = "task, [[steel::task]]";
+  let Content = [{
+The ``[[steel::task]]`` keyword attached before a function makes the function calls
+traceable by an STEEL runtime. TODO
+  }];
+}
+
 def PreserveMostDocs : Documentation {
   let Category = DocCatCallingConvs;
   let Content = [{

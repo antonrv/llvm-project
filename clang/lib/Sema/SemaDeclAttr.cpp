@@ -3138,6 +3138,17 @@ static void handleSectionAttr(Sema &S, Decl *D, const ParsedAttr &AL) {
   }
 }
 
+// STEEL ADD
+static void handleSTEELTaskAttr(Sema &S, Decl *D, const ParsedAttr &AL) {
+  StringRef Str;
+  SourceLocation LiteralLoc;
+
+  S.checkStringLiteralArgumentAttr(AL, 0, Str, &LiteralLoc);
+
+  STEELTaskAttr *NewAttr = ::new (S.Context) STEELTaskAttr(S.Context, AL, Str);
+  D->addAttr(NewAttr);
+}
+
 // This is used for `__declspec(code_seg("segname"))` on a decl.
 // `#pragma code_seg("segname")` uses checkSectionName() instead.
 static bool checkCodeSegName(Sema &S, SourceLocation LiteralLoc,
@@ -8275,6 +8286,12 @@ static void ProcessDeclAttribute(Sema &S, Scope *scope, Decl *D,
     break;
   case ParsedAttr::AT_InternalLinkage:
     handleInternalLinkageAttr(S, D, AL);
+    break;
+
+  // STEEL ADD
+  case ParsedAttr::AT_STEELTask:
+    // handleSimpleAttribute<STEELTaskAttr>(S, D, AL);
+    handleSTEELTaskAttr(S, D, AL);
     break;
 
   // Microsoft attributes:
